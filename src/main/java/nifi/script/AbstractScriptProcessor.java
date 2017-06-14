@@ -20,7 +20,7 @@ import org.apache.nifi.annotation.lifecycle.OnStopped;
 import org.apache.nifi.components.AllowableValue;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.Validator;
-import org.apache.nifi.logging.ProcessorLog;
+import org.apache.nifi.logging.ComponentLog;
 import org.apache.nifi.processor.AbstractSessionFactoryProcessor;
 import org.apache.nifi.processor.Relationship;
 
@@ -176,7 +176,7 @@ abstract class AbstractScriptProcessor extends AbstractSessionFactoryProcessor {
         engineQ = new LinkedBlockingQueue<>(numberOfScriptEngines);
         ClassLoader originalContextClassLoader = Thread.currentThread().getContextClassLoader();
         try {
-            ProcessorLog log = getLogger();
+            ComponentLog log = getLogger();
 
             ScriptEngineConfigurator configurator = scriptEngineConfiguratorMap.get(scriptEngineName.toLowerCase());
 

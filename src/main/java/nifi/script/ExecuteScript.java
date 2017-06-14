@@ -21,7 +21,7 @@ import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
-import org.apache.nifi.logging.ProcessorLog;
+import org.apache.nifi.logging.ComponentLog;
 import org.apache.nifi.processor.ProcessContext;
 import org.apache.nifi.processor.ProcessSession;
 import org.apache.nifi.processor.ProcessSessionFactory;
@@ -160,7 +160,7 @@ public class ExecuteScript extends AbstractScriptProcessor {
             // No engine available so nothing more to do here
             return;
         }
-        ProcessorLog log = getLogger();
+        ComponentLog log = getLogger();
         ProcessSession session = sessionFactory.createSession();
         try {
 
